@@ -23,7 +23,7 @@ function buildRow(length) {
     row.classList = 'row';
     //set row height
     let portion = 100 / length;
-    row.style.height = `${portion}%`;
+    //row.style.height = `${portion}%`;
     let cell = {};
     let cellNum = 0;
     while (cellNum < length) {
@@ -41,9 +41,9 @@ function buildCell(resolution) {
     //set cell dimensions
     let portion = 100 / resolution; 
     const width = `calc(${portion}% - ${borderAllowance}px)`;
-    cell.style.width = width;
-    cell.style.borderWidth = `${cellBorderWidth}px`; //Override to fix layout problems if CSS border changes
-    cell.style.height = `calc(100% - ${borderAllowance}px)`;
+    //cell.style.width = width;
+    //cell.style.borderWidth = `${cellBorderWidth}px`; //Override to fix layout problems if CSS border changes
+    //cell.style.height = `calc(100% - ${borderAllowance}px)`;
     cell.addEventListener('mouseover',fillCell);
     return cell;
 }
