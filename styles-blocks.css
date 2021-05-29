@@ -7,6 +7,12 @@
     /*width: calc(25% - 2px);*/
 }
 
+.cell {
+    width: calc(10% - 1px);
+    border-width: 0.5px;
+    height: calc(100% - 1px);
+}
+
 .container {
     display: inline-block;
     width: 500px;
