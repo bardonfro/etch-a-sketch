@@ -2,9 +2,13 @@
     display: inline-block;
     height: 100%;
     background-color: rgb(210, 189, 137);
-    /*margin:0px;*/
     border: 0px white solid; /*width overridden in script*/
-    /*width: calc(25% - 2px);*/
+}
+
+.cell {
+    width: calc(10% - 1px);
+    border-width: 0.5px;
+    height: calc(100% - 1px);
 }
 
 .container {
@@ -26,8 +30,6 @@
 .row {
     width: 100%;
     margin:0px;
-    /*font-size: 0px;*/
-    
 }
 
 
