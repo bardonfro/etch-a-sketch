@@ -1,7 +1,7 @@
 const container = document.querySelector('.container');
 
 let cellCount = 10;
-let cellBorderWidth = .5; //Values below 1 crash the layout
+let cellBorderWidth = 1; //Values below 1 crash the layout
 let penColor = "rgb(43, 38, 25)";
 
 function buildGrid(size) {
@@ -41,9 +41,9 @@ function buildCell(resolution) {
     //set cell dimensions
     let portion = 100 / resolution; 
     const width = `calc(${portion}% - ${borderAllowance}px)`;
-    //cell.style.width = width;
-    //cell.style.borderWidth = `${cellBorderWidth}px`; //Override to fix layout problems if CSS border changes
-    //cell.style.height = `calc(100% - ${borderAllowance}px)`;
+    cell.style.width = width;
+    cell.style.borderWidth = `${cellBorderWidth}px`; //Override to fix layout problems if CSS border changes
+    cell.style.height = `calc(100% - ${borderAllowance}px)`;
     cell.addEventListener('mouseover',fillCell);
     return cell;
 }
