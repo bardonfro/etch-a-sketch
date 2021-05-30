@@ -1,49 +1,40 @@
 const container = document.querySelector('.container');
 
-let cellCount = 10;
-let cellBorderWidth = 1; //Values below 1 crash the layout
+let resolution = [40,30];
+let targetContainerSize = 600;
 let penColor = "rgb(43, 38, 25)";
 
-function buildGrid(size) {
+function buildGrid(resWide, resHigh) {
     let gridFrame = document.createElement('div');
     gridFrame.classList = 'grid-frame';
+    gridFrame.style.fontSize = getSizeFactor(resWide);
 
     let row = {};
     let rowNum = 0;
-    while (rowNum < size) {
-        row = buildRow(size);
+    while (rowNum < resHigh) {
+        row = buildRow(resWide);
         gridFrame.appendChild(row);
         ++rowNum;
     }
     container.appendChild(gridFrame);
 }
 
-function buildRow(length) {
+function buildRow(res) {
     const row = document.createElement('div');
     row.classList = 'row';
-    //set row height
-    let portion = 100 / length;
-    //row.style.height = `${portion}%`;
     let cell = {};
     let cellNum = 0;
-    while (cellNum < length) {
-        cell = buildCell(length);
+    while (cellNum < res) {
+        cell = buildCell();
         row.appendChild(cell);
         ++cellNum;
     }
     return row;
 }
 
-function buildCell(resolution) {
+function buildCell() {
     const cell = document.createElement('div');
     cell.classList = 'cell';
-    const borderAllowance = cellBorderWidth + cellBorderWidth;
-    //set cell dimensions
-    let portion = 100 / resolution; 
-    const width = `calc(${portion}% - ${borderAllowance}px)`;
-    //cell.style.width = width;
-    //cell.style.borderWidth = `${cellBorderWidth}px`; //Override to fix layout problems if CSS border changes
-    //cell.style.height = `calc(100% - ${borderAllowance}px)`;
     cell.addEventListener('mouseover',fillCell);
     return cell;
 }
@@ -57,11 +48,28 @@ function removeGrid() {
     gridFrame.remove();
 }
 
-function resizeGrid (size) {
+function resizeGrid (resWide, resHigh) {
     removeGrid();
-    buildGrid(size);
+    buildGrid(resWide, resHigh);
 }
 
-buildGrid(cellCount);
+function getSizeFactor (resWide) {
+    const targetCellSize = targetContainerSize / resWide / 10;
+    return targetCellSize + "em"    
+}
+
+buildGrid(resolution[0], resolution[1]);
+
+function testGridSize (minRes, interval, maxRes) {
+    let res = minRes;
+    let i = 1;
+    while (res <= maxRes) {
+        resizeGrid(res,res);
+        console.log(i + ": " + res + " - " + container.offsetWidth);
+
+        ++i
+        res = res + interval;
+    }
+}
 
  

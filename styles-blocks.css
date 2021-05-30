@@ -1,5 +1,22 @@
+#bezel {
+    display: inline-block;
+    background-color: brown;
+    padding: 1em;
+}
+
 body {
     background-color: burlywood;
+}
+
+#branding {
+    display:inline-block;
+    color: rgb(193, 144, 21);
+    margin: 1em;
+}
+
+#branding .script {
+    font-family: 'Niconne', cursive;
+    font-size: 2.5em;
 }
 
 .cell {
@@ -7,18 +24,17 @@ body {
     background-color: rgb(210, 189, 137);
     border-right: 1px white solid;
     border-bottom: 1px white solid;
+    width: calc(1em - 1px);
+    height: calc(1em - 1px);
     min-width: 1px;
     min-height: 1px;
 }
 
-.cell {
-    width: 4em; /*calc(10% - 2px);*/
-    height: 4em;/*calc(100% - 2px);*/
-}
-
 .container {
-    display: inline-block;
-    font-size: 10px;
+    /*display: inline-block;*/
+    margin-top: .5em;
+    margin-left: 7em;
+    margin-right: 7em;
 }
 
 .grid-frame {
@@ -27,14 +43,36 @@ body {
     text-align: left;
 }
 
+.knob {
+    display:inline-block;
+    height: 7em;
+    width: 7em;
+    margin-top: 1.5em;
+    border-radius: 50%;
+    background-color: white;
+    
+}
+
+.knob.left {
+    float: left;
+    margin-left: 0em;
+}
+
+.knob.right {
+    float:right;
+    margin-right: 0em;
+}
+
 #paper {
+    font-size: 10px;
     line-height: 0px;
     text-align: center;
+    min-width: 900px; /*Approx 1.5 times width of bezel*/
 }
 
 .row {
     width: 100%;
-    margin:0px;
+    margin:0em;
 }
 
 
