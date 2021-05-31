@@ -4,23 +4,36 @@
         <Title>Etch-A-Sketch - A fun little project</Title>
         <link rel="stylesheet" href="styles-blocks.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
-
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Niconne&family=Sarabun:ital@1&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <h1>Learning Grids</h1>
         <div id="paper">
             <div id="bezel">
                 <div id="branding">
-                    <h2><span class="script">Etch A Sketch</span></h2>
+                    <h2><span class="blockFont">MAGIC</span><span class="scriptFont">Etch A Sketch</span><span class="blockFont">SCREEN</span></h2>
                 </div>
                 <div class="container">
                   <!--Etch A Sketch is formed here by script-->  
-                </div> 
+                </div>
+                <button id="erase-button">ERASE</button> 
                 <div class="knob left"></div>
                 <div class="knob right"></div>
-            </div> 
+            </div>
+            <div id="controls">
+                <h2>Pick Color:</h2>
+                <button data-color="black" class="color-button selected">Classic</button>
+                <button data-color="rainbow" class="color-button">Rainbow</button>
+                <button data-color="gradient" class="color-button">Gradient</button>
+                <button data-color="custom" class="color-button">Custom...<input type="color" id="color-picker" value="#118d25"></button>
+                <div id="slider-container">
+                    <h2>Adjust Resolution:</h2>
+                    <input type="range" min="2" max="65" value="10" class="slider" id="resize-slider">
+                    <p id="resolution-output">10</p>
+                </div>
+            </div>
+ 
         </div>
         <script src="script-blocks.js"></script>
     </body>
