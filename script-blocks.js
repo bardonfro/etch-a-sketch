@@ -1,19 +1,27 @@
 const container = document.querySelector('.container');
 const bezel = document.querySelector('#bezel');
 const btnErase = document.querySelector('#erase-button');
-const sliderResize = document.querySelector('resize-slider');
+const sliderResize = document.querySelector('#resize-slider');
 const btnsColor = document.querySelectorAll('.color-button');
 const colorPicker = document.querySelector('#color-picker');
+const outpResolution = document.querySelector('#resolution-output')
 
 btnErase.addEventListener('click', eraseBoard);
+bezel.addEventListener('animationend',function(){
+    btnErase.classList.remove('selected');
+    bezel.classList.remove('animated');
+});
+sliderResize.addEventListener('change', sliderSet);
+sliderResize.addEventListener('input', sliderMove);
 btnsColor.forEach(addListenerColorChange);
 colorPicker.addEventListener('change', function () {customColor = this.value;});
 
 
 let resolution = [40,30];
+let aspectRatio = 4/3;
 let targetContainerSize = 600;
-let penColor = "rgb(30, 30, 30)";
-let customColor = "#118d25"
+let penColor = "black";
+let customColor = "#00C2B5"
 
 function addListenerColorChange(btn) { 
     btn.addEventListener('click', function() {changePenColor(btn);});
@@ -58,18 +66,11 @@ function changePenColor (btn) {
     const current = document.querySelector('button.selected');
     if (current) {current.classList.remove('selected');};
     btn.classList.add('selected');
-    
-    
     penColor = btn.dataset.color;
-    console.log(penColor);
 }
 
 function eraseBoard() {
     btnErase.classList.add('selected');
-    bezel.addEventListener('animationend',function(){
-        btnErase.classList.remove('selected');
-        bezel.classList.remove('animated');
-    });
     bezel.classList.add('animated');
     resizeGrid(resolution[0],resolution[1]);
 }
@@ -77,11 +78,13 @@ function eraseBoard() {
 function fillCell(e) {
     let col
     switch (penColor) {
+        case "none":
+            return;
         case "rainbow":
             col = randomColor();
             break;
         case "gradient":
-            col = "rgb(30, 30, 30, 0.5)";
+            col = returnGradient(e.target);
             break;
         case "custom":
             col = customColor;
@@ -89,13 +92,19 @@ function fillCell(e) {
         default:
             col = "rgb(30, 30, 30)";
     }
-
     e.target.style.backgroundColor = col;
 }
 
 function getSizeFactor (resWide) {
     const targetCellSize = targetContainerSize / resWide / 10;
     return targetCellSize + "em"    
+}
+
+function initializePage () {
+    buildGrid(resolution[0], resolution[1]);
+    outpResolution.textContent = resolution[0] + "x" + resolution[1];
+    sliderResize.value = resolution[0];
+    colorPicker.value = customColor;
 }
 
 function removeGrid() {
@@ -115,12 +124,37 @@ function randomColor() {
     return `rgb(${R}, ${G}, ${B})`
 }
 
+function returnGradient(cell) {
+    let opacity = Number(cell.dataset.opacity);
+    if (!(opacity < 1)) {return;}
+    if (!opacity) {
+        opacity = 0.1;
+    } else {
+        opacity += .1;
+    }
+
+    cell.dataset.opacity = opacity;
+    cell.backgroundColor = `rgb(30, 30, 30, ${opacity})`;
+
+}
+
 function setCustomColor (e) {
     customColor = e.target.value;
 }
 
+function sliderMove(e) {
+    val = e.target.value;
+    resolution = [val, Math.floor(val / aspectRatio)];
+    outpResolution.textContent = resolution[0] + "x" + resolution[1];
+}
+
+function sliderSet(e) {
+    resizeGrid(resolution[0], resolution[1]);
+}
+
 //Initial layout on page load
-buildGrid(resolution[0], resolution[1]);
+initializePage();
+
 
 //Function for testing layout
 function testGridSize (minRes, interval, maxRes) {
@@ -133,5 +167,3 @@ function testGridSize (minRes, interval, maxRes) {
         res = res + interval;
     }
 }
-
- 

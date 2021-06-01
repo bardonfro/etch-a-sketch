@@ -9,3 +9,5 @@ A project for (The Odin Project)[https://www.theodinproject.om].
 - Percentages for size don't work unles the parent has a defined size (duh).
 - CSS calc() for dimensions is really handy
 - Passing an event and acting on its properties in the handler
+- Different event handler triggers
+-

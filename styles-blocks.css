@@ -71,7 +71,6 @@ button.selected {
 
 .cell {
     display: inline-block;
-    background-color: rgb(208, 208, 208);
     border-right: 1px rgb(20, 20, 20, .3) solid;
     border-bottom: 1px rgb(20, 20, 20, .3) solid;
     width: calc(1em - 1px);
@@ -96,9 +95,8 @@ button.selected {
 }
 
 .grid-frame {
-    border-top: 1px white solid;
-    border-left: 1px white solid;
-    text-align: left;
+    border-top: 1px rgb(20, 20, 20, .3) solid;
+    border-left: 1px rgb(20, 20, 20, .3) solid;
     background-color: rgb(208, 208, 208);
 }
 
