@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Etch-A-Sketch - A fun little project</Title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Niconne&family=Sarabun:ital@1&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="bezel">
+            <div id="branding">
+                <h2><span class="blockFont">MAGIC</span><span class="scriptFont">Etch A Sketch</span><span class="blockFont">SCREEN</span></h2>
+            </div>
+            <div class="container">
+                <!--Etch A Sketch is formed here by script-->  
+            </div>
+            <div id="bezel-footer">
+                <div class="knob left"></div>
+                <button id="erase-button">ERASE</button> 
+                <div class="knob right"></div>
+            </div>
+        </div>
+        <div id="controls">
+            <h2>Pick Color:</h2>
+            <div id="button-container">
+                <button data-color="none" class="color-button no-display">None</button> <!--Used for troubleshooting-->
+                <button data-color="black" class="color-button selected">Classic</button>
+                <button data-color="rainbow" class="color-button">Rainbow</button>
+                <button data-color="gradient" class="color-button">Gradient</button>
+                <button data-color="custom" class="color-button">Custom...<input type="color" id="color-picker" value="#118d25"></button>
+            </div>
+            <h2>Adjust Resolution:</h2>
+            <div id="slider-container">
+                <input type="range" min="2" max="65" value="10" class="slider" id="resize-slider">
+                <p id="resolution-output"></p>
+            </div>
+            <div id="footer">
+                <p>Created by <a target="_blank" href="https://www.github.com/bardonfro/etch-a-sketch">bardonfro</a> for <a target="_blank" href="https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors">The Odin Project</a>.</p>
+                <p style="font-size: .7em; font-style: italic;">Released into the wild 2021 by <a target="_blank" href="https://unlicense.org/">unlicense.</a></p>
+
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

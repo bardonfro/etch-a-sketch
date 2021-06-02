@@ -1,0 +1,176 @@
+#bezel {
+    display: inline-block;
+    background-color: rgb(185, 35, 35);
+    margin-top: 2em;
+    padding: 1em;
+    color: rgb(234, 204, 125);
+    font-size: .625em;
+    text-shadow: 1px 2px 0px rgb(137, 120, 75);
+    border: rgb(172, 70, 70) 2em outset;
+}
+
+#bezel button {
+    background:none;
+    border: 2px solid rgb(234, 204, 125);
+    padding: .5em 1em;
+    box-shadow: 1px 2px 0px rgb(137, 120, 75);
+    text-shadow: inherit;
+}
+
+#bezel.animated {
+    animation: shake 0.6s;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+#bezel-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0em;
+    background-color: rgb(232, 216, 177);
+    font-family: 'Sarabun', sans-serif;
+    font-size: 16px;
+    line-height: 0px;
+    text-align: center;
+    min-width: 900px; /*Approx 1.5 times width of bezel*/
+}
+
+#branding {
+    display:inline-block;
+    margin: 1em;
+}
+
+#branding .blockFont {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 1.2em;
+}
+
+button {
+    font-family: inherit;
+    font-size: 1rem;
+    color: inherit;
+    background: none;
+    border-style: solid;
+    border-radius: .3em;
+}
+
+button.selected {
+    transform: scale(1.2);
+    box-shadow: 2px 2px 1px 1px rgb(0,0,0,.2);
+    background-color: rgb(256,256,256,.2);
+}
+
+#button-container, #slider-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#branding .scriptFont {
+    font-family: 'Niconne', cursive;
+    font-size: 2.5em;
+    margin: 0em 2.2em;
+}
+
+.cell {
+    display: inline-block;
+    border-right: 1px rgb(20, 20, 20, .3) solid;
+    border-bottom: 1px rgb(20, 20, 20, .3) solid;
+    width: 1em;
+    height: 1em;
+    box-sizing: border-box;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+.color-button {
+    display: flex;
+    margin: .5em 2em;
+
+}
+
+.container {
+    margin-top: .5em;
+    margin-left: 7em;
+    margin-right: 7em;
+}
+
+#controls h2 {
+    margin-top: 2em;
+}
+
+#footer {
+    margin-top: 4em;
+    padding: 2em;
+    background-color: rgb(185, 35, 35);
+    color: rgb(234, 204, 125);
+}
+
+#footer a {
+    color: rgb(234, 204, 125);
+}
+
+.grid-frame {
+    background-color: rgb(208, 208, 208);
+}
+
+.knob {
+    /*display:inline-block;*/
+    height: 7em;
+    width: 7em;
+    /*margin-top: 1.5em;*/
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.knob.left {
+    float: left;
+    margin-left: 0em;
+}
+
+.knob.right {
+    float:right;
+    margin-right: 0em;
+}
+
+.no-display {
+    display:none;
+}
+
+
+p#resolution-output {
+    display: inline;
+}
+
+.row {
+    width: 100%;
+    margin:0em;
+}
+
+#slider-container input, #slider-container p {
+    margin: .5em 2em;
+}
+
+
