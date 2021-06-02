@@ -7,10 +7,6 @@ const colorPicker = document.querySelector('#color-picker');
 const outpResolution = document.querySelector('#resolution-output')
 
 btnErase.addEventListener('click', eraseBoard);
-bezel.addEventListener('animationend',function(){
-    btnErase.classList.remove('selected');
-    bezel.classList.remove('animated');
-});
 sliderResize.addEventListener('change', sliderSet);
 sliderResize.addEventListener('input', sliderMove);
 btnsColor.forEach(addListenerColorChange);
@@ -75,6 +71,11 @@ function eraseBoard() {
     resizeGrid(resolution[0],resolution[1]);
 }
 
+bezel.addEventListener('animationend',function(){
+    btnErase.classList.remove('selected');
+    bezel.classList.remove('animated');
+});
+
 function fillCell(e) {
     let col
     switch (penColor) {
@@ -124,18 +125,19 @@ function randomColor() {
     return `rgb(${R}, ${G}, ${B})`
 }
 
+//We use dataset and backgroundColor instead of style.opacity to not change the border
 function returnGradient(cell) {
     let opacity = Number(cell.dataset.opacity);
-    if (!(opacity < 1)) {return;}
+    if (opacity >= 1) {
+        return;
+    }
     if (!opacity) {
         opacity = 0.1;
     } else {
-        opacity += .1;
+        opacity = (Math.round((opacity*10) + 1) / 10);
     }
-
     cell.dataset.opacity = opacity;
-    cell.backgroundColor = `rgb(30, 30, 30, ${opacity})`;
-
+    cell.style.backgroundColor = `rgb(30, 30, 30, ${opacity})`;
 }
 
 function setCustomColor (e) {
@@ -154,16 +156,3 @@ function sliderSet(e) {
 
 //Initial layout on page load
 initializePage();
-
-
-//Function for testing layout
-function testGridSize (minRes, interval, maxRes) {
-    let res = minRes;
-    let i = 1;
-    while (res <= maxRes) {
-        resizeGrid(res,res);
-        console.log(i + ": " + res + " - " + container.offsetWidth);
-        ++i
-        res = res + interval;
-    }
-}
