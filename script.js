@@ -90,6 +90,9 @@ function fillCell(e) {
         case "custom":
             col = customColor;
             break;
+        case "erase":
+            col = ""
+            break;
         default:
             col = "rgb(30, 30, 30)";
     }
