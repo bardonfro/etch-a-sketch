@@ -1,5 +1,5 @@
 # Etch-A-Sketch
-A project for (The Odin Project)[https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors] by (bardonfro)[https://github.com/bardonfro/etch-a-sketch].
+A project for (The Odin Project)[https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/etch-a-sketch-project] by (bardonfro)[https://github.com/bardonfro/etch-a-sketch].
 
 ## What I've Learned
 - Differences between flex-box and grid
